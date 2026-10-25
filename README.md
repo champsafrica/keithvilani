@@ -4,26 +4,19 @@ The personal website of **Keith Vilani**: founder and CEO of Digitalx, founder o
 and the person behind SANA, GetClient and Advera.
 
 ## The idea
-Up to 9,000 points of light live in a WebGL canvas behind every page (fewer on phones, and a 2D fallback without WebGL).
-On the home page they form a **constellation of everything Keith has built**, with Digitalx at the hub. Hover a star to read
-it, click it to open its page. Each page gives the lights a new shape, and **the lights travel with you between pages**:
-their positions are kept for the session, so they flow out of one page's shape into the next.
+A personal statement, not a portfolio. The whole site argues one sentence:
 
-| Page | The lights become |
-| --- | --- |
-| Home | The constellation, then 12, then each venture's symbol |
-| Digitalx | A bold X in orbit |
-| Keith Vilani Foundation | A beating heart with a pulse line |
-| SANA | A shield with a road through it |
-| GetClient | A verified badge |
-| Go Ads | A delivery bike carrying a GO billboard |
-| Advera | An AI spark |
-| Work pages | The client brand's initials |
-| About | KV, then Table Mountain |
-| Contact | A tree you grow by pressing and holding |
-| 404 | 404 |
+> **Talent is everywhere. Opportunity isn't.**
 
-Reading sections switch to a dim, even starfield so text stays easy to read.
+- **First 3 seconds:** the sentence fills the screen and resolves from blur, while a glossy black planet with a burning
+  ring drops in front of "everywhere" and warm fluid light blooms behind it (both real-time WebGL shaders).
+- **Next 10 seconds:** 100 lights, one for each young South African who wants work; 47 go dark (Stats SA youth
+  unemployment, Q2 2026). Then *"so I build bridges"*: drag across the gap and each of Keith's ventures snaps in as a plank.
+- **Six bridges:** a swipeable rail of arched cards, one per venture.
+- **The shareable moment:** visitors sign the sentence with their name and city, and the site draws a 1080x1350 poster
+  they can share straight to their phone's share sheet or download.
+- Every page keeps the same fluid light; the planet and the interactive pieces live on the home page.
+- Respects reduced motion, lowers resolution automatically on slow devices, and works without WebGL.
 
 ## Pages (19 + 404)
 `/`, `/about/`, `/ventures/` and one page per venture, `/work/` and one page per client project, `/notes/`, `/contact/`.
