@@ -86,7 +86,7 @@ ${ld({ '@context': 'https://schema.org', '@graph': graph })}
 <div class="vignette" aria-hidden="true"></div>
 <div class="cursor" aria-hidden="true"></div>
 <div class="cursor-ring" aria-hidden="true"><span></span></div>
-<div id="loader" aria-hidden="true"><div class="loader-in"><div class="loader-name">Keith <i>Vilani</i></div><div class="loader-line" id="loaderLine">Gathering the lights</div><div class="loader-bar"><i id="loaderBar"></i></div></div></div>
+<div id="loader" aria-hidden="true"><p class="loader-line">Every star is something I built</p><div class="loader-bar"><i id="loaderBar"></i></div></div>
 <header class="site-header">
   <a href="/" class="brand" aria-label="Keith Vilani, home"><span class="brand-mark">KV</span><span>Keith Vilani<small>Founder &middot; Builder</small></span></a>
   <nav class="nav-right" aria-label="Main">
@@ -247,6 +247,19 @@ html['/'] = layout({
       <h2 class="display reveal" style="margin-top:22px">Leave Keith <em>a light.</em></h2>
       <p class="wall-lead reveal">A thank-you, an idea, a word of encouragement. Write it, release it, and it joins the sky.</p>
       <p class="reveal" style="margin-top:28px"><a class="btn" href="/notes/">Open the night sky</a></p>
+    </div>
+  </section>
+
+  <section class="yourstar" data-scene="dust">
+    <div class="wrap">
+      <p class="eyebrow reveal">Your turn</p>
+      <h2 class="display reveal" style="margin-top:22px">Write your name <em>in the sky.</em></h2>
+      <form class="star-form reveal" id="starForm" autocomplete="off">
+        <label for="starName" class="sr">Your name</label>
+        <input id="starName" name="name" maxlength="14" required placeholder="Your name">
+        <button class="btn" type="submit">Light it</button>
+      </form>
+      <p class="star-note reveal" id="starNote">The lights will spell it, then it becomes a star in Keith's constellation, next to everything he has built. It stays on this device.</p>
     </div>
   </section>
 

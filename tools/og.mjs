@@ -16,7 +16,7 @@ const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1200, height: 630 } });
 for (const p of pages) {
   await page.goto(`http://localhost:4399${p}?og`);
-  await page.waitForTimeout(3200);
+  await page.waitForTimeout(4500);
   await page.screenshot({ path: `${OUT}og/${key(p)}.jpg`, type: 'jpeg', quality: 80 });
   console.log('og', p);
 }

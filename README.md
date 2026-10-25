@@ -4,10 +4,20 @@ The personal website of **Keith Vilani**: founder and CEO of Digitalx, founder o
 and the person behind SANA, GetClient and Advera.
 
 ## The idea
-Up to 9,000 points of light live in a WebGL canvas behind every page (fewer on phones, and a 2D fallback without WebGL).
-On the home page they form a **constellation of everything Keith has built**, with Digitalx at the hub. Hover a star to read
-it, click it to open its page. Each page gives the lights a new shape, and **the lights travel with you between pages**:
-their positions are kept for the session, so they flow out of one page's shape into the next.
+Up to 11,000 points of light live in a **3D WebGL scene** behind every page (fewer on phones, a 2D fallback without
+WebGL, and an automatic step-down on slow devices). The camera follows the cursor, or the tilt of a phone. Out-of-focus
+lights blur into bokeh, shapes turn like sculptures, and fast motion leaves light streaks.
+
+- **Big bang intro** (first visit per session): the lights rush in from deep space to spell KEITH VILANI, hold, then
+  explode into the constellation as the page appears.
+- **The constellation**: everything Keith has built, with Digitalx at the hub. Hover a star to read it, click to open it.
+- **Hyperspace**: every internal link streaks the stars past the viewer at light speed, flashes, and the next page
+  arrives out of the depth.
+- **Write your name in the sky**: visitors' names are spelled in light and become a star in Keith's constellation
+  (stored on their own device).
+- **The live Cape Town sky**: colours follow the time in Cape Town (night, golden hour, day), shown next to the clock.
+- Reading sections switch to a dim, deep starfield so text stays easy to read.
+- Preview any shape with `?scene=`, for example `/?scene=title:Hello` or `/?scene=billboard`.
 
 | Page | The lights become |
 | --- | --- |
