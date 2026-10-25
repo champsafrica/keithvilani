@@ -1,0 +1,12 @@
+{
+  "name": "keithvilani",
+  "private": true,
+  "type": "module",
+  "description": "keithvilani.co.za: the personal website of Keith Vilani",
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "node tools/serve.mjs",
+    "og": "node tools/og.mjs"
+  },
+  "engines": { "node": ">=18" }
+}

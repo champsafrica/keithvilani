@@ -1,0 +1,562 @@
+[
+ {
+  "slug": "mbeki-healthcare",
+  "name": "Mbeki Healthcare",
+  "sector": "Healthcare",
+  "own": false,
+  "live": "https://www.mbekihealthcare.co.za",
+  "scope": "Healthcare website",
+  "tagline": "A nurse-practitioner practice in Kuils River and King William's Town",
+  "summary": "A healthcare website that explains every service in plain language and makes booking an appointment simple.",
+  "location": "Kuils River, Cape Town and King William's Town",
+  "sections": [
+   {
+    "h": "The challenge",
+    "paras": [
+     "Mbeki Healthcare is a nurse-practitioner practice led by Sr Phindie Mbeki, with primary healthcare in Kuils River and a wellness and aesthetics branch in King William's Town. Patients needed one trustworthy place to see what the practice offers, which branch to visit and how to book."
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "Our approach",
+    "paras": [
+     "Lead with trust and clarity. Every service gets its own plain-language page, both branches are clearly separated, and booking is never more than one tap away, by form or WhatsApp."
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "What we built",
+    "paras": [],
+    "items": [
+     "A mobile-first website with 18 service pages, from chronic care and family planning to wound care and IV drips",
+     "Separate branch and area pages for Kuils River, King William's Town and surrounding suburbs",
+     "An appointment booking form and WhatsApp booking",
+     "A Google review helper that copies the patient's words and opens the review page",
+     "A page for the practice's Phindi Naturals product range",
+     "Hosting, SSL and business email, managed by Digitalx"
+    ],
+    "chips": []
+   },
+   {
+    "h": "The outcome",
+    "paras": [],
+    "items": [
+     "Patients can find the right service and branch and book online or on WhatsApp",
+     "Payment options, emergency contact and opening details are visible on every device",
+     "The site is maintained by Digitalx, so information stays current"
+    ],
+    "chips": []
+   },
+   {
+    "h": "Technology",
+    "paras": [],
+    "items": [],
+    "chips": [
+     "Hand-built HTML and CSS",
+     "Mobile-first design",
+     "Local SEO set-up",
+     "Google Business Profile",
+     "WhatsApp booking"
+    ]
+   }
+  ]
+ },
+ {
+  "slug": "mbeki-healthcare-clinic-system",
+  "name": "Mbeki Healthcare Clinic System",
+  "sector": "Healthcare",
+  "own": false,
+  "live": "",
+  "scope": "Clinic administration system",
+  "tagline": "Custom clinic software, built and managed by Digitalx",
+  "summary": "A secure clinic administration system with one record per patient, from the front desk to the consulting room.",
+  "location": "Kuils River, Cape Town",
+  "sections": [
+   {
+    "h": "The challenge",
+    "paras": [
+     "The practice needed one secure place to run the clinic, from registering patients at the front desk to clinical notes and consent in the consulting room, without expensive off-the-shelf software."
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "Our approach",
+    "paras": [
+     "Give every role its own station. Everything the front desk records is available to the nurse, but nothing clinical travels the other way, and every access to a patient record is logged."
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "What we built",
+    "paras": [],
+    "items": [
+     "One record per patient, from arrival to departure",
+     "Separate stations for the front desk, nurses and the practice administrator",
+     "Allergies, notes, diagnoses and medication hidden from the front desk",
+     "A log of every access to patient information",
+     "Document and PDF generation, and an installable app for staff"
+    ],
+    "chips": []
+   },
+   {
+    "h": "The outcome",
+    "paras": [],
+    "items": [
+     "Front desk, consulting room and consent handled in one system",
+     "Clinical information protected by role-based access",
+     "A full record of who accessed patient information"
+    ],
+    "chips": []
+   },
+   {
+    "h": "Technology",
+    "paras": [],
+    "items": [],
+    "chips": [
+     "Bespoke web platform",
+     "Supabase with Row Level Security",
+     "Role-based access",
+     "Installable web app",
+     "PDF generation"
+    ]
+   }
+  ]
+ },
+ {
+  "slug": "techstep",
+  "name": "TechStep Academy",
+  "sector": "Education",
+  "own": false,
+  "live": "https://www.techstep.co.za",
+  "scope": "Training academy website",
+  "tagline": "Practical computer and technology training, Blackheath, Cape Town",
+  "summary": "A course website that helps learners find their level, see every price and register or enrol on WhatsApp.",
+  "location": "Blackheath, Cape Town",
+  "sections": [
+   {
+    "h": "The challenge",
+    "paras": [
+     "TechStep Academy teaches practical computer and technology skills in five levels, from computer foundations to basic coding, for individuals and for company teams. Prospective learners needed to understand which level suits them, what it costs and how to start."
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "Our approach",
+    "paras": [
+     "Make the learning path obvious. Each level has a clear outcome and a published price, a short \"find your level\" tool removes the guesswork, and enrolment works the way people already communicate: online or on WhatsApp."
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "What we built",
+    "paras": [],
+    "items": [
+     "Programme, course and pricing pages for all five levels and the full pathway",
+     "A \"find your level\" tool and online registration",
+     "Instalment options explained up front: a deposit plus monthly payments",
+     "A refer-and-earn page and a downloadable company profile",
+     "Location pages for learners across all nine provinces",
+     "Hosting and ongoing management by Digitalx"
+    ],
+    "chips": []
+   },
+   {
+    "h": "The outcome",
+    "paras": [],
+    "items": [
+     "Learners can choose a level, see the price and register without phoning first",
+     "Companies can find on-site team training in the same place",
+     "Every course and location has its own page for search"
+    ],
+    "chips": []
+   },
+   {
+    "h": "Technology",
+    "paras": [],
+    "items": [],
+    "chips": [
+     "Hand-built HTML and CSS",
+     "Mobile-first design",
+     "Technical SEO",
+     "WhatsApp enrolment",
+     "Online registration"
+    ]
+   }
+  ]
+ },
+ {
+  "slug": "visaease",
+  "name": "VisaEase",
+  "sector": "Travel services",
+  "own": false,
+  "live": "https://www.visaease.co.za",
+  "scope": "Service business website",
+  "tagline": "Independent visa application support for South Africans",
+  "summary": "A clear, trustworthy website for a visa support service that explains the process and books consultations.",
+  "location": "Serving applicants across South Africa",
+  "sections": [
+   {
+    "h": "The challenge",
+    "paras": [
+     "VisaEase helps South African applicants with US DS-160 forms, US embassy appointment scheduling and Schengen visa documents. Visa help is a trust purchase: people need to know exactly what the service does, and what it cannot promise, before they share personal details."
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "Our approach",
+    "paras": [
+     "Be transparent first. Each service has its own page, the process is shown in four simple steps, and the site states plainly that VisaEase is independent and cannot guarantee a visa decision."
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "What we built",
+    "paras": [],
+    "items": [
+     "Dedicated pages for DS-160 support, US appointment scheduling and Schengen document preparation",
+     "A four-step \"how it works\" explanation",
+     "Consultation and contact calls to action on every page",
+     "Privacy policy and terms pages",
+     "Hosting and ongoing management by Digitalx"
+    ],
+    "chips": []
+   },
+   {
+    "h": "The outcome",
+    "paras": [],
+    "items": [
+     "First-time applicants, business travellers and families can see which service fits them",
+     "Expectations are set honestly before anyone gets in touch",
+     "Every service is reachable from search through its own page"
+    ],
+    "chips": []
+   },
+   {
+    "h": "Technology",
+    "paras": [],
+    "items": [],
+    "chips": [
+     "Hand-built HTML and CSS",
+     "Mobile-first design",
+     "SEO set-up",
+     "Consultation enquiries"
+    ]
+   }
+  ]
+ },
+ {
+  "slug": "unique-holistic",
+  "name": "Unique Holistic Massage & Wellness Spa",
+  "sector": "Wellness",
+  "own": false,
+  "live": "https://uniqueholistic.co.za",
+  "scope": "Spa website with online booking",
+  "tagline": "Massage and wellness spa in Belgravia, Bellville",
+  "summary": "A calm spa website with a full price list, mobile massage across Cape Town and online booking.",
+  "location": "Bellville, Cape Town",
+  "sections": [
+   {
+    "h": "The challenge",
+    "paras": [
+     "Unique Holistic offers massage, lashes and nails, waxing, body scrubs, sauna and more from its Bellville spa, plus mobile massage across Cape Town. Clients wanted to see treatments and prices and book quickly, often from their phones."
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "Our approach",
+    "paras": [
+     "Wellness is chosen on feel, then on price. A calm design sets the tone, the full price list is easy to find, and a sticky call, WhatsApp and book bar keeps booking within reach on every screen."
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "What we built",
+    "paras": [],
+    "items": [
+     "Treatment, pricing, mobile massage and team pages",
+     "Online booking through Fresha, plus call and WhatsApp options",
+     "Area pages for the Northern Suburbs",
+     "FAQs, opening hours and directions",
+     "Hosting and ongoing management by Digitalx"
+    ],
+    "chips": []
+   },
+   {
+    "h": "The outcome",
+    "paras": [],
+    "items": [
+     "Clients can compare treatments and prices and book online in a few taps",
+     "Mobile massage, with its travel fee, is explained before anyone asks",
+     "Local area pages help the spa appear in nearby searches"
+    ],
+    "chips": []
+   },
+   {
+    "h": "Technology",
+    "paras": [],
+    "items": [],
+    "chips": [
+     "Hand-built HTML and CSS",
+     "Mobile-first design",
+     "Fresha booking",
+     "Local SEO",
+     "WhatsApp"
+    ]
+   }
+  ]
+ },
+ {
+  "slug": "delight-aluminum",
+  "name": "Delight Aluminum Glass and Steel",
+  "sector": "Manufacturing",
+  "own": false,
+  "live": "https://delightaluminumglasssteel.co.za",
+  "scope": "Website and quote requests",
+  "tagline": "Aluminium windows and doors, steel gates and glass, Cape Town",
+  "summary": "A product-led website for an aluminium, glass and steel manufacturer that turns visitors into quote requests.",
+  "location": "Blue Downs, Cape Town",
+  "sections": [
+   {
+    "h": "The challenge",
+    "paras": [
+     "Delight makes and installs custom aluminium windows and doors, trellis doors, steel gates and glass for homes, developers and businesses in the Western Cape. Buyers want to see the products and past work, then get a price."
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "Our approach",
+    "paras": [
+     "Fabrication is bought on proof of work. Each product has its own page, the gallery shows completed installations, and requesting a quote is the easiest action on the site."
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "What we built",
+    "paras": [],
+    "items": [
+     "A page for each product line",
+     "A project gallery",
+     "A quote form with a service picker that sends the request straight to WhatsApp",
+     "A floating WhatsApp button, FAQs and service-area pages",
+     "Hosting and ongoing management by Digitalx"
+    ],
+    "chips": []
+   },
+   {
+    "h": "The outcome",
+    "paras": [],
+    "items": [
+     "Visitors can browse products, see real installations and request a quote in under a minute",
+     "Quote requests arrive on WhatsApp with the product already chosen",
+     "Each product and service area has its own page for search"
+    ],
+    "chips": []
+   },
+   {
+    "h": "Technology",
+    "paras": [],
+    "items": [],
+    "chips": [
+     "Hand-built HTML and CSS",
+     "Mobile-first design",
+     "WhatsApp quote form",
+     "Local SEO"
+    ]
+   }
+  ]
+ },
+ {
+  "slug": "kelvin-tadiwanashe",
+  "name": "Kelvin Tadiwanashe",
+  "sector": "Author & publishing",
+  "own": false,
+  "live": "https://www.kelvintadiwa.com",
+  "scope": "Author and book-launch website",
+  "tagline": "Author of \"This Is Our Country: Between Memory and Tomorrow\", now launched",
+  "summary": "An author website for Kelvin Tadiwanashe, \"The Royal Doctor\": the launched debut book, the press around it and the author's own words.",
+  "location": "Zimbabwe and international readers",
+  "sections": [
+   {
+    "h": "The challenge",
+    "paras": [
+     "Kelvin Tadiwanashe, a Zimbabwean author, needed a home for his debut book, \"This Is Our Country: Between Memory and Tomorrow\", ahead of its launch: somewhere readers, press and the publisher could point to."
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "Our approach",
+    "paras": [
+     "Put the book first, then let the author speak. After the launch we rebuilt the site in an editorial style: a cinematic cover hero, the book's three themes, press coverage and quotes in Kelvin's own words, with \"Get the book\" always one tap away."
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "What we built",
+    "paras": [],
+    "items": [
+     "An editorial homepage: the launched book, \"In the news\", \"In his own words\" and a photo journey",
+     "The book's three threads (History & Memory, Leadership and Zimbabwean Identity) told as short sections",
+     "\"Get the book\" calls to action linking to the publisher",
+     "About, book, blog and contact pages, plus a photo gallery with a lightbox"
+    ],
+    "chips": []
+   },
+   {
+    "h": "The outcome",
+    "paras": [],
+    "items": [
+     "The site now announces the launched book and sends readers straight to buy it",
+     "Press coverage, quotes and launch photos sit together, ready for media and event organisers"
+    ],
+    "chips": []
+   },
+   {
+    "h": "Technology",
+    "paras": [],
+    "items": [],
+    "chips": [
+     "Hand-built HTML and CSS",
+     "Editorial design",
+     "Mobile-first design",
+     "Photo gallery",
+     "Blog"
+    ]
+   }
+  ]
+ },
+ {
+  "slug": "sana",
+  "name": "SANA: Safe and Noble Actions",
+  "sector": "Road safety",
+  "own": true,
+  "live": "https://sana.digitalxagency.io",
+  "scope": "Awareness website (a Digitalx initiative)",
+  "tagline": "Road-safety awareness for South Africa, a Digitalx initiative",
+  "summary": "Digitalx's own road-safety initiative: plain-language safety topics, tips and campaigns that anyone can share.",
+  "location": "South Africa",
+  "sections": [
+   {
+    "h": "The challenge",
+    "paras": [
+     "Road-safety advice is often long, technical and easy to ignore. As our own community initiative, SANA needed a simple, memorable home for practical guidance that anyone can act on and share."
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "Our approach",
+    "paras": [
+     "Short topics, one-line tips and a clear invitation to get involved, built around the tagline \"Every trip. Every driver. Every time.\""
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "What we built",
+    "paras": [],
+    "items": [
+     "Eight road-safety topic pages, from speeding and drunk driving to fatigue and pedestrian awareness",
+     "Shareable safety tips and a campaigns section",
+     "Free resources to download",
+     "Get-involved paths for individuals, businesses, schools and communities"
+    ],
+    "chips": []
+   },
+   {
+    "h": "The outcome",
+    "paras": [],
+    "items": [
+     "A free public resource that schools, businesses and drivers can use and share",
+     "A home for SANA campaigns as they launch"
+    ],
+    "chips": []
+   },
+   {
+    "h": "Technology",
+    "paras": [],
+    "items": [],
+    "chips": [
+     "Hand-built HTML and CSS",
+     "Mobile-first design",
+     "SEO set-up"
+    ]
+   }
+  ]
+ },
+ {
+  "slug": "getclient",
+  "name": "GetClient",
+  "sector": "Technology",
+  "own": true,
+  "live": "https://www.getclient.co.za",
+  "scope": "Verified business directory (a Digitalx product)",
+  "tagline": "South Africa's verified business directory, built by Digitalx",
+  "summary": "Our own product: \"Hire local. Hire checked.\" A directory of South African businesses that passed identity and CIPC checks, with the checks shown on every profile.",
+  "location": "Cape Town and Pretoria",
+  "sections": [
+   {
+    "h": "The challenge",
+    "paras": [
+     "People searching for a service provider struggle to tell real, registered businesses from the rest. Good businesses, in turn, struggle to prove they are trustworthy. GetClient is Digitalx's answer to both."
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "Our approach",
+    "paras": [
+     "Verification first, shown in the open. Every profile lists which checks it passed and when; checks expire after 12 months and are re-run, so a badge never goes stale."
+    ],
+    "items": [],
+    "chips": []
+   },
+   {
+    "h": "What we built",
+    "paras": [],
+    "items": [
+     "Search by business, category and city, plus location and category pages",
+     "Up to five checks per profile: identity, CIPC registration, insurance, trading history and client ratings",
+     "Free listings and paid Blue and Gold verification tiers, with public pricing",
+     "\"Listed on GetClient\" badges that businesses add to their own sites with one line of code",
+     "Quote requests, and a light and dark theme",
+     "An installable web app"
+    ],
+    "chips": []
+   },
+   {
+    "h": "The outcome",
+    "paras": [],
+    "items": [
+     "A live directory where people find checked businesses and request quotes",
+     "Verified businesses show their badge on their own websites, as Digitalx and several of our clients do"
+    ],
+    "chips": []
+   },
+   {
+    "h": "Technology",
+    "paras": [],
+    "items": [],
+    "chips": [
+     "Bespoke web platform",
+     "Search and filtering",
+     "Verification workflow",
+     "Installable web app (PWA)"
+    ]
+   }
+  ]
+ }
+]

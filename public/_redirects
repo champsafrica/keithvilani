@@ -1,0 +1,5 @@
+# Netlify: pages from the old Foundation site
+/programs.html      /ventures/keith-vilani-foundation/  301
+/get-involved.html  /ventures/keith-vilani-foundation/  301
+/about.html         /about/                             301
+/index.html         /                                   301
