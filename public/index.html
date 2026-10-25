@@ -24,19 +24,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.03eabedd.css">
+<link rel="stylesheet" href="/assets/site.f5c3ca7b.css">
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://keithvilani.co.za/#keith","name":"Keith Vilani","url":"https://keithvilani.co.za/","jobTitle":"Founder and Chief Executive Officer","worksFor":{"@type":"Organization","name":"Digitalx","url":"https://www.digitalxagency.io/"},"homeLocation":{"@type":"Place","name":"Cape Town, South Africa"}},{"@type":"WebSite","name":"Keith Vilani","url":"https://keithvilani.co.za/"}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<canvas id="fluid" aria-hidden="true"></canvas>
+<div id="wall" aria-hidden="true"></div>
 <header class="site-header">
   <a href="/" class="logo" aria-label="Keith Vilani, home"><span class="tab"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="13" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="7 4.6"/></svg></span><span class="word">keith vilani</span></a>
-  <nav class="pill" aria-label="Main"><a href="/" aria-current="page">Statement</a><a href="/about/">About</a><a href="/ventures/">Ventures</a><a href="/work/">Work</a><a href="/contact/">Contact</a></nav>
+  <nav class="pill" aria-label="Main"><a href="/" aria-current="page">Statement</a><a href="/about/">About</a><a href="/ventures/">Ventures</a><a href="/work/">Work</a><a href="/contact/">Contact</a><button class="wall-btn" type="button" data-wallpaper style="padding:9px 18px;border-radius:999px;font-size:13px"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M5 16l4-4 3 3 2-2 5 5"/></svg>Wallpaper</button></nav>
   <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
 </header>
-<nav class="menu" id="menu" aria-label="Menu" inert><a href="/" aria-current="page">statement</a><a href="/about/">about</a><a href="/ventures/">ventures</a><a href="/work/">work</a><a href="/contact/">contact</a><a href="/notes/">notes</a><p>hello@digitalxagency.io · 021 879 3035</p></nav>
+<nav class="menu" id="menu" aria-label="Menu" inert><a href="/" aria-current="page">statement</a><a href="/about/">about</a><a href="/ventures/">ventures</a><a href="/work/">work</a><a href="/contact/">contact</a><a href="/notes/">notes</a><button class="wall-btn" type="button" data-wallpaper><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M5 16l4-4 3 3 2-2 5 5"/></svg>Use my wallpaper</button><p>hello@digitalxagency.io · 021 879 3035</p></nav>
 <main id="main">
 
   <section class="hero" id="top" aria-labelledby="statement">
@@ -190,6 +190,18 @@
     </div>
   </section>
 
+  <section class="section" id="wallpaper" aria-labelledby="wp-title">
+    <div class="wrap wall-panel">
+      <div class="reveal">
+        <p class="label">Look behind the words</p>
+        <h2 class="sec-title" id="wp-title" style="margin-top:16px">this site wears <em>your</em> screen.</h2>
+        <p style="margin-top:22px;color:#d9d4cd;max-width:42ch">You’re seeing a wallpaper made for your <span data-device-name>device</span>. Choose the photo you use as your wallpaper and every page here becomes yours, colours and all. It never leaves your phone.</p>
+        <div class="wall-actions"><button class="btn" type="button" data-wallpaper>use my wallpaper</button><button class="btn ghost" type="button" data-wallpaper-reset>reset</button></div>
+      </div>
+      <div class="phone reveal" aria-hidden="true"><div class="scr" id="wallMirror"></div><small>Talent is everywhere.</small><b id="phoneClock">09:41</b></div>
+    </div>
+  </section>
+
   <section class="closing">
     <div class="wrap">
       <p class="label reveal">What’s next</p>
@@ -215,7 +227,8 @@
     <div class="foot-bar"><span>© 2026 Keith Vilani</span><span>Cape Town, South Africa</span><span>Built by <a href="https://www.digitalxagency.io/" target="_blank" rel="noopener">Digitalx</a></span></div>
   </div>
 </footer>
+<div class="wall-hint" id="wallHint" role="dialog" aria-label="Use your wallpaper"><span>This site wears your <span data-device-name>device</span>. Make it yours?</span><button class="btn" type="button" data-wallpaper>Use my wallpaper</button><button class="x" id="wallHintClose" type="button" aria-label="Dismiss">×</button></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="/assets/site.65e861ae.js" defer></script>
+<script src="/assets/site.62cd26c5.js" defer></script>
 </body>
 </html>

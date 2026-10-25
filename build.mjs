@@ -82,17 +82,18 @@ ${ld({ '@context': 'https://schema.org', '@graph': graph })}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<canvas id="fluid" aria-hidden="true"></canvas>
+<div id="wall" aria-hidden="true"></div>
 <header class="site-header">
   <a href="/" class="logo" aria-label="Keith Vilani, home"><span class="tab">${RING}</span><span class="word">keith vilani</span></a>
-  <nav class="pill" aria-label="Main">${pill}</nav>
+  <nav class="pill" aria-label="Main">${pill}<button class="wall-btn" type="button" data-wallpaper style="padding:9px 18px;border-radius:999px;font-size:13px"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M5 16l4-4 3 3 2-2 5 5"/></svg>Wallpaper</button></nav>
   <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
 </header>
-<nav class="menu" id="menu" aria-label="Menu" inert>${menu}<p>${esc(SITE.email)} · ${esc(SITE.phone)}</p></nav>
+<nav class="menu" id="menu" aria-label="Menu" inert>${menu}<button class="wall-btn" type="button" data-wallpaper><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M5 16l4-4 3 3 2-2 5 5"/></svg>Use my wallpaper</button><p>${esc(SITE.email)} · ${esc(SITE.phone)}</p></nav>
 <main id="main">
 ${crumbs ? body.replace('<!--crumbs-->', crumbHtml) : body}
 </main>
 ${footer()}
+<div class="wall-hint" id="wallHint" role="dialog" aria-label="Use your wallpaper"><span>This site wears your <span data-device-name>device</span>. Make it yours?</span><button class="btn" type="button" data-wallpaper>Use my wallpaper</button><button class="x" id="wallHintClose" type="button" aria-label="Dismiss">×</button></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="${JS}" defer></script>
 </body>
@@ -262,6 +263,18 @@ html['/'] = layout({
         </form>
         <div class="quick"><a href="https://wa.me/?text=${SHARE_TXT}%20${SHARE_URL}" target="_blank" rel="noopener">WhatsApp</a><a href="https://twitter.com/intent/tweet?text=${SHARE_TXT}&url=${SHARE_URL}" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=${SHARE_URL}" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/sharer/sharer.php?u=${SHARE_URL}" target="_blank" rel="noopener">Facebook</a></div>
       </div>
+    </div>
+  </section>
+
+  <section class="section" id="wallpaper" aria-labelledby="wp-title">
+    <div class="wrap wall-panel">
+      <div class="reveal">
+        <p class="label">Look behind the words</p>
+        <h2 class="sec-title" id="wp-title" style="margin-top:16px">this site wears <em>your</em> screen.</h2>
+        <p style="margin-top:22px;color:#d9d4cd;max-width:42ch">You’re seeing a wallpaper made for your <span data-device-name>device</span>. Choose the photo you use as your wallpaper and every page here becomes yours, colours and all. It never leaves your phone.</p>
+        <div class="wall-actions"><button class="btn" type="button" data-wallpaper>use my wallpaper</button><button class="btn ghost" type="button" data-wallpaper-reset>reset</button></div>
+      </div>
+      <div class="phone reveal" aria-hidden="true"><div class="scr" id="wallMirror"></div><small>Talent is everywhere.</small><b id="phoneClock">09:41</b></div>
     </div>
   </section>
 

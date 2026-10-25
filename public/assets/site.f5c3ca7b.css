@@ -19,22 +19,51 @@ button{background:none;border:0;cursor:pointer}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .o{color:var(--o1)}
 
-/* living background: warm fluid light */
-#fluid{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0;transition:opacity 2.4s var(--ease)}
-.lit #fluid{opacity:1}
-.no-gl #fluid{display:none}
-.no-gl body{background:radial-gradient(60% 50% at 50% 20%,rgba(240,80,42,.35),transparent 70%),var(--bg)}
+/* the background: the visitor's own device */
+#wall{position:fixed;inset:-4%;z-index:0;pointer-events:none;background-size:cover;background-position:center;background-color:#0b0b0d;transform:scale(1.04);animation:breathe 38s ease-in-out infinite alternate}
+#wall::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,calc(var(--dim,.42) - .12)) 0%,rgba(0,0,0,var(--dim,.42)) 45%,rgba(0,0,0,calc(var(--dim,.42) + .18)) 100%);transition:background .3s}
+@keyframes breathe{to{transform:scale(1.1) translate(-1.2%,-1%)}}
+.own-wall #wall{animation-duration:60s}
+/* iPhone and iPad: luminous layered colour, like the iOS wallpapers */
+[data-device=ios] #wall{background-image:radial-gradient(70% 55% at 15% 12%,#ff6b8b 0,transparent 62%),radial-gradient(60% 50% at 88% 28%,#8a5cff 0,transparent 62%),radial-gradient(80% 60% at 70% 92%,#2b7bff 0,transparent 64%),radial-gradient(60% 45% at 18% 78%,#ffb04a 0,transparent 60%),linear-gradient(165deg,#120c2e,#3a0f43 55%,#0a1a3a)}
+/* Android: Material You, soft tonal shapes */
+[data-device=android] #wall{background-image:radial-gradient(circle at 22% 24%,#cfe9d6 0 17%,transparent 17.4%),radial-gradient(circle at 80% 18%,#ffd8b8 0 12%,transparent 12.4%),radial-gradient(circle at 72% 70%,#9fd3c7 0 24%,transparent 24.4%),radial-gradient(circle at 18% 88%,#e7c6ff 0 15%,transparent 15.4%),radial-gradient(120% 80% at 50% 0%,#3d5a4f,#1d2a25)}
+/* Mac: dunes at sunset, like the macOS landscapes */
+[data-device=mac] #wall{background-image:radial-gradient(130% 60% at 25% 112%,#123d3a 0 52%,transparent 52.4%),radial-gradient(120% 52% at 85% 108%,#1e6a5c 0 50%,transparent 50.4%),radial-gradient(140% 50% at 50% 118%,#2f8a73 0 60%,transparent 60.4%),linear-gradient(180deg,#2b2350 0%,#8c4c7a 34%,#f08c6a 62%,#ffd0a0 100%)}
+/* Windows: the bloom */
+[data-device=windows] #wall{background-image:radial-gradient(34% 40% at 50% 58%,#e6f3ff 0,#7cc0ff 30%,rgba(63,140,255,.6) 55%,transparent 75%),conic-gradient(from 200deg at 50% 62%,#1846c9,#4f9bff,#1c55e0,#8cc4ff,#1a49d0,#5fa8ff,#1846c9);background-color:#0c2a8a}
+/* Linux and everything else: a quiet aurora */
+[data-device=linux] #wall,[data-device=other] #wall{background-image:radial-gradient(70% 50% at 20% 20%,#2c7a6a 0,transparent 60%),radial-gradient(70% 50% at 80% 30%,#5a3aa8 0,transparent 60%),radial-gradient(80% 60% at 50% 100%,#1b4a8a 0,transparent 65%);background-color:#0b0f1a}
 .site-header,main,footer{position:relative;z-index:2}
 main,footer{transition:opacity .45s var(--ease),transform .6s var(--ease)}
 .leaving main,.leaving footer{opacity:0;transform:translateY(-20px)}
 
+/* wallpaper controls */
+.wall-btn{display:inline-flex;align-items:center;gap:8px}
+.wall-btn svg{width:15px;height:15px}
+.wall-hint{position:fixed;left:50%;bottom:18px;z-index:35;display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100% - 24px);padding:8px 8px 8px 18px;border-radius:999px;background:rgba(20,18,16,.72);border:1px solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);font-size:13px;transform:translate(-50%,140%);opacity:0;transition:transform .7s var(--spring),opacity .4s}
+.wall-hint.show{transform:translate(-50%,0);opacity:1}
+.wall-hint .btn{height:38px;padding:0 16px;font-size:13px;box-shadow:none}
+.wall-hint .x{width:34px;height:34px;border-radius:50%;color:var(--mute);font-size:16px}
+.wall-hint .x:hover{color:#fff;background:rgba(255,255,255,.08)}
+.wall-panel{display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center}
+.wall-panel .phone{justify-self:center;width:min(70vw,280px);aspect-ratio:9/19.5;border-radius:44px;border:10px solid #111;box-shadow:0 0 0 2px rgba(255,255,255,.12),0 40px 120px -40px rgba(0,0,0,.9);overflow:hidden;position:relative;background:inherit}
+.wall-panel .phone .scr{position:absolute;inset:0;background:inherit}
+.wall-panel .phone b{position:absolute;left:0;right:0;top:16%;text-align:center;font-size:58px;font-weight:200;letter-spacing:-.04em}
+.wall-panel .phone small{position:absolute;left:0;right:0;top:12%;text-align:center;font-size:13px;opacity:.85}
+.wall-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+@media (max-width:860px){.wall-panel{grid-template-columns:1fr}}
+
 /* header: a hanging logo tab and a glass pill */
-.site-header{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;padding:0 var(--gut)}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:flex-start;padding:0 var(--gut)}
 .logo{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
 .tab{width:62px;height:66px;background:#fff;color:#000;border-radius:0 0 22px 22px;display:grid;place-items:center}
 .tab svg{width:30px;height:30px;animation:spin 14s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.logo .word{font-weight:600;font-size:19px;letter-spacing:-.02em;line-height:1}
+.logo .word{font-weight:600;font-size:19px;letter-spacing:-.02em;line-height:1;transition:opacity .3s,transform .4s var(--ease)}
+.scrolled .logo .word{opacity:0;transform:translateY(-6px)}
+.tab{transition:height .4s var(--ease)}
+.scrolled .tab{height:56px}
 .pill{margin-top:22px;display:flex;gap:2px;padding:5px;border-radius:999px;background:rgba(20,18,16,.55);border:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .pill a{padding:9px 20px;border-radius:999px;font-size:13px;font-weight:400;transition:background .3s,color .3s}
 .pill a:hover{background:rgba(255,255,255,.08)}
@@ -43,7 +72,8 @@ main,footer{transition:opacity .45s var(--ease),transform .6s var(--ease)}
 @media (max-width:820px){.pill{display:none}.menu-btn{display:block}.tab{width:52px;height:56px}.logo .word{font-size:16px}}
 .menu{position:fixed;inset:0;z-index:30;background:rgba(5,5,5,.96);display:flex;flex-direction:column;justify-content:center;padding:var(--gut);gap:4px;opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s}
 .menu-open .menu{opacity:1;visibility:visible}
-.menu-open .menu-btn{position:relative;z-index:31}
+.menu-open .menu-btn{background:#fff;color:#000}
+.menu .wall-btn{font-size:16px;font-weight:400;letter-spacing:0;margin-top:28px;color:#fff}
 .menu a{font-size:clamp(44px,12vw,80px);font-weight:700;letter-spacing:-.05em;line-height:1.05}
 .menu a[aria-current]{color:var(--o1)}
 .menu p{margin-top:32px;color:var(--mute);font-size:14px}
@@ -71,7 +101,7 @@ main,footer{transition:opacity .45s var(--ease),transform .6s var(--ease)}
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:150px 0 60px;overflow:hidden}
 .stage{position:relative;text-align:center}
 .small-top{display:block;font-size:clamp(26px,3.4vw,52px);font-weight:200;letter-spacing:-.03em;margin-bottom:-.2em;text-align:left;padding-left:6%}
-.word-xl{display:block;font-size:clamp(52px,16.2vw,290px);font-weight:800;letter-spacing:-.075em;line-height:.8;white-space:nowrap;background:linear-gradient(180deg,#fff 30%,#bdb8b2 62%,rgba(255,255,255,.28) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;margin-left:-.04em}
+.word-xl{filter:drop-shadow(0 12px 40px rgba(0,0,0,.45));display:block;font-size:clamp(52px,16.2vw,290px);font-weight:800;letter-spacing:-.075em;line-height:.8;white-space:nowrap;background:linear-gradient(180deg,#fff 30%,#bdb8b2 62%,rgba(255,255,255,.28) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;margin-left:-.04em}
 .small-bot{display:block;text-align:right;font-size:clamp(26px,3.4vw,52px);font-weight:200;letter-spacing:-.03em;color:var(--o1);padding-right:4%;margin-top:.15em}
 #orb{position:absolute;left:50%;top:50%;width:min(84vw,960px);height:min(58vw,660px);transform:translate(-50%,-48%);pointer-events:none;z-index:3}
 .hero-row{display:grid;grid-template-columns:260px 1fr 320px;gap:32px;align-items:end;margin-top:-2vw;position:relative;z-index:4}
@@ -92,7 +122,7 @@ main,footer{transition:opacity .45s var(--ease),transform .6s var(--ease)}
 }
 
 /* intro choreography (first 3 seconds) */
-.js .hero .small-top,.js .hero .word-xl,.js .hero .small-bot,.js .hero-row>*{opacity:0;filter:blur(18px);transform:translateY(40px) scale(1.04)}
+.js .hero .small-top,.js .hero .small-bot,.js .hero-row>*{opacity:0;filter:blur(18px);transform:translateY(40px) scale(1.04)}
 .go .hero .small-top,.go .hero .word-xl,.go .hero .small-bot,.go .hero-row>*{opacity:1;filter:none;transform:none;transition:opacity 1.3s var(--ease),filter 1.3s var(--ease),transform 1.5s var(--ease)}
 .go .hero .small-top{transition-delay:.15s}
 .go .hero .word-xl{transition-delay:.45s}
@@ -308,3 +338,6 @@ footer{padding:12vh 0 34px;border-top:1px solid var(--line)}
   .js .hero #orb{transform:scale(.6)}
   .go .hero #orb{transform:none}
 }
+
+.js .hero .word-xl{opacity:0;transform:translateY(40px) scale(1.04)}
+.go .hero .word-xl{opacity:1;transform:none;filter:drop-shadow(0 12px 40px rgba(0,0,0,.45));transition:opacity 1.3s .45s var(--ease),transform 1.5s .45s var(--ease)}

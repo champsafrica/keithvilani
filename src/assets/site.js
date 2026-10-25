@@ -13,6 +13,9 @@
   const menuBtn = $('#menuBtn');
   menuBtn.addEventListener('click', () => { const open = !root.classList.contains('menu-open'); root.classList.toggle('menu-open', open); menuBtn.setAttribute('aria-expanded', open); menuBtn.textContent = open ? 'Close' : 'Menu'; $('#menu').toggleAttribute('inert', !open); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && root.classList.contains('menu-open')) menuBtn.click(); });
+  $$('#menu a').forEach(a => a.addEventListener('click', () => { if (root.classList.contains('menu-open')) menuBtn.click(); }));
+  const onScroll = () => root.classList.toggle('scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, {passive: true}); onScroll();
 
   /* ---------- shared GL helper ---------- */
   function glProgram(canvas, frag, opts) {
@@ -32,26 +35,6 @@
     const u = new Proxy({}, {get: (c, k) => c[k] || (c[k] = gl.getUniformLocation(pr, k))});
     return {gl, u};
   }
-
-  /* ---------- the living background: warm fluid light (domain-warped noise) ---------- */
-  const FLUID = `precision mediump float;
-uniform vec2 R;uniform float T;uniform vec2 M;uniform float I;uniform float K;uniform float P;
-float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
-float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}
-void main(){
- vec2 p=(gl_FragCoord.xy-.5*R)/R.y;p+=M*.06;p.y+=P*.35;
- float t=T*.05;
- vec2 q=vec2(fbm(p*1.3+t),fbm(p*1.3-t+3.1));
- vec2 r=vec2(fbm(p*1.5+q*2.4+vec2(1.7,9.2)+t*1.4),fbm(p*1.5+q*2.4+vec2(8.3,2.8)-t));
- float f=fbm(p*1.1+r*2.8);
- vec3 c=vec3(.66,.09,.05)*smoothstep(.38,.78,f)*1.15;
- c+=vec3(1.,.42,.13)*pow(smoothstep(.52,.88,f),2.)*1.35;
- c+=vec3(1.,.8,.58)*pow(smoothstep(.7,.95,f),4.)*1.1;
- c+=vec3(.32,.07,.48)*smoothstep(.55,.95,r.y)*smoothstep(.3,.7,f)*.45;
- float v=smoothstep(1.35,.15,length(p*vec2(.75,1.)-vec2(0.,.08)));
- c*=v*I*K;
- gl_FragColor=vec4(c,1.);}`;
 
   /* ---------- the planet: a glossy black sphere with a burning ring, ray-marched ---------- */
   const ORB = `precision highp float;
@@ -84,20 +67,16 @@ void main(){
  float glow=exp(-max(md,0.)*14.)*.14*(1.-a)*smoothstep(.48,.3,length(uv));
  gl_FragColor=vec4(col+vec3(1.,.42,.14)*glow,a)*D;}`;
 
-  const fluidCv = $('#fluid'), F = glProgram(fluidCv, FLUID, {alpha: false, antialias: false, preserveDrawingBuffer: OG});
   const orbCv = $('#orb'), O = orbCv ? glProgram(orbCv, ORB, {alpha: true, premultipliedAlpha: true, antialias: false, preserveDrawingBuffer: OG}) : null;
-  if (!F) root.classList.add('no-gl');
   if (orbCv && !O) orbCv.remove();
 
-  let fq = innerWidth < 700 ? .35 : .5, oq = innerWidth < 700 ? .8 : 1;
+  let oq = innerWidth < 700 ? .8 : 1;
   function resize() {
     const dpr = Math.min(devicePixelRatio || 1, 2);
-    fluidCv.width = Math.round(innerWidth * fq); fluidCv.height = Math.round(innerHeight * fq);
-    if (F) F.gl.viewport(0, 0, fluidCv.width, fluidCv.height);
     if (O) { const r = orbCv.getBoundingClientRect(); orbCv.width = Math.round(r.width * dpr * oq); orbCv.height = Math.round(r.height * dpr * oq); O.gl.viewport(0, 0, orbCv.width, orbCv.height); }
   }
 
-  const st = {mx: 0, my: 0, I: 0, burst: 0, K: 1};
+  const st = {mx: 0, my: 0, burst: 0, dim: -1};
   const mouse = {x: 0, y: 0};
   addEventListener('pointermove', e => { mouse.x = e.clientX / innerWidth * 2 - 1; mouse.y = e.clientY / innerHeight * 2 - 1; }, {passive: true});
   addEventListener('deviceorientation', e => { if (e.gamma != null && !fine) { mouse.x = Math.max(-1, Math.min(1, e.gamma / 30)); mouse.y = Math.max(-1, Math.min(1, (e.beta - 50) / 30)); } });
@@ -105,28 +84,22 @@ void main(){
   if (orbCv) new IntersectionObserver(es => { orbVisible = es[0].isIntersecting; }).observe(orbCv);
 
   const t0 = performance.now();
-  let last = t0, ft = 16, slow = 0, lit = false;
+  let last = t0, ft = 16, slow = 0;
   function frame(now) {
     const raw = now - last, dt = Math.min(50, raw) / 16.67; last = now;
     ft += (raw - ft) * .05;
     const T = reduce ? 6 : (now - t0) / 1000;
     st.mx += (mouse.x - st.mx) * .04 * dt; st.my += (mouse.y - st.my) * .04 * dt;
-    st.I += ((lit ? 1 : 0) - st.I) * .025 * dt;
     st.burst *= Math.pow(.94, dt);
-    const sc = scrollY / innerHeight;
-    st.K += ((sc < .6 ? 1 : .5) - st.K) * .05 * dt;
-    if (F && !d.hidden) {
-      const {gl, u} = F;
-      gl.uniform2f(u.R, fluidCv.width, fluidCv.height); gl.uniform1f(u.T, T); gl.uniform2f(u.M, st.mx, -st.my);
-      gl.uniform1f(u.I, OG ? 1 : Math.min(1.6, st.I + st.burst)); gl.uniform1f(u.K, OG ? 1 : st.K); gl.uniform1f(u.P, Math.min(sc, 3) * .2);
-      gl.drawArrays(gl.TRIANGLES, 0, 3);
-    }
+    // the wallpaper dims as you read further down the page
+    const dim = Math.min(.8, (d.body.dataset.dim ? +d.body.dataset.dim : .42) + scrollY / innerHeight * .28);
+    if (Math.abs(dim - st.dim) > .004) { st.dim = dim; root.style.setProperty('--dim', dim.toFixed(3)); }
     if (O && orbVisible && !d.hidden) {
       const {gl, u} = O;
       gl.uniform2f(u.R, orbCv.width, orbCv.height); gl.uniform1f(u.T, T); gl.uniform2f(u.M, st.mx, -st.my); gl.uniform1f(u.D, 1);
       gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
-    if (!OG && ft > 26 && ++slow > 60) { fq = Math.max(.22, fq * .8); oq = Math.max(.5, oq * .85); resize(); slow = 0; } else if (ft <= 26) slow = 0;
+    if (!OG && ft > 26 && ++slow > 60) { oq = Math.max(.5, oq * .85); resize(); slow = 0; } else if (ft <= 26) slow = 0;
     requestAnimationFrame(frame);
   }
 
@@ -253,11 +226,86 @@ void main(){
   });
   addEventListener('pageshow', e => { if (e.persisted) root.classList.remove('leaving'); });
 
+  /* ---------- the background is the visitor's own device ----------
+     Browsers can't read a device's wallpaper, so every page wears a wallpaper in the style of the visitor's
+     own system, and one tap lets them use their real wallpaper photo (kept on their device only). */
+  const wall = $('#wall');
+  const ua = navigator.userAgent, plat = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
+  const forcedDevice = new URLSearchParams(location.search).get('device');
+  const device = forcedDevice || (/iPhone|iPad|iPod/.test(ua) || (/Mac/.test(plat) && navigator.maxTouchPoints > 1) ? 'ios' : /Android/.test(ua) ? 'android' : /Mac/.test(plat) ? 'mac' : /Win/.test(plat) ? 'windows' : /Linux|CrOS/.test(plat + ua) ? 'linux' : 'other');
+  root.dataset.device = device;
+  const NAMES = {ios: 'iPhone', android: 'Android', mac: 'Mac', windows: 'Windows', linux: 'Linux'};
+  $$('[data-device-name]').forEach(el => el.textContent = NAMES[device] || 'device');
+
+  function setAccent(h) {
+    if (h == null) { ['--o1', '--o2', '--grad'].forEach(k => root.style.removeProperty(k)); return; }
+    root.style.setProperty('--o1', `hsl(${h} 92% 64%)`);
+    root.style.setProperty('--o2', `hsl(${h} 78% 52%)`);
+    root.style.setProperty('--grad', `linear-gradient(100deg,hsl(${h - 10} 78% 50%) 0%,hsl(${h} 90% 60%) 55%,hsl(${h + 14} 95% 74%) 100%)`);
+  }
+  // the most vivid colour family in the image becomes the site's accent
+  function hueOf(img) {
+    const c = d.createElement('canvas'); c.width = c.height = 48;
+    const x = c.getContext('2d'); x.drawImage(img, 0, 0, 48, 48);
+    const px = x.getImageData(0, 0, 48, 48).data, bins = new Array(24).fill(0), sums = new Array(24).fill(0);
+    for (let i = 0; i < px.length; i += 4) {
+      const r = px[i] / 255, g = px[i + 1] / 255, b = px[i + 2] / 255, mx = Math.max(r, g, b), mn = Math.min(r, g, b), dl = mx - mn;
+      if (mx < .25 || dl / mx < .3) continue;
+      let h = mx === r ? ((g - b) / dl) % 6 : mx === g ? (b - r) / dl + 2 : (r - g) / dl + 4; h = (h * 60 + 360) % 360;
+      const k = Math.floor(h / 15), wgt = dl * mx; bins[k] += wgt; sums[k] += h * wgt;
+    }
+    let best = -1, bw = 0; bins.forEach((v, i) => { if (v > bw) { bw = v; best = i; } });
+    return best < 0 || bw < 6 ? null : Math.round(sums[best] / bins[best]);
+  }
+  const mirror = $('#wallMirror'), phoneClock = $('#phoneClock');
+  const syncMirror = () => { if (mirror) { const cs = getComputedStyle(wall); mirror.style.backgroundImage = cs.backgroundImage; mirror.style.backgroundSize = 'cover'; mirror.style.backgroundPosition = 'center'; } };
+  if (phoneClock) { const pt = () => phoneClock.textContent = new Intl.DateTimeFormat(undefined, {hour: '2-digit', minute: '2-digit', hour12: false}).format(new Date()); pt(); setInterval(pt, 15000); }
+  function applyOwn(url, hue) {
+    wall.style.backgroundImage = `url("${url}")`; root.classList.add('own-wall'); setAccent(hue); syncMirror();
+  }
+  function resetWall() {
+    wall.style.backgroundImage = ''; root.classList.remove('own-wall'); setAccent(null); syncMirror();
+    try { localStorage.removeItem('kv-wall'); localStorage.removeItem('kv-wall-hue'); } catch (e) {}
+    toast(`Back to the ${NAMES[device] || 'device'} wallpaper.`);
+  }
+  const saved = !OG && local.get('kv-wall');
+  if (saved) { const h = local.get('kv-wall-hue'); applyOwn(saved, h === '' || h == null ? null : +h); } else syncMirror();
+
+  const picker = d.createElement('input');
+  picker.type = 'file'; picker.accept = 'image/*'; picker.hidden = true; d.body.appendChild(picker);
+  $$('[data-wallpaper]').forEach(b => b.addEventListener('click', () => { if (root.classList.contains('menu-open')) menuBtn.click(); picker.click(); }));
+  $$('[data-wallpaper-reset]').forEach(b => b.addEventListener('click', resetWall));
+  picker.addEventListener('change', () => {
+    const f = picker.files && picker.files[0]; if (!f) return;
+    const img = new Image(), src = URL.createObjectURL(f);
+    img.onload = () => {
+      const max = 1800, k = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+      const c = d.createElement('canvas'); c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      const url = c.toDataURL('image/jpeg', .84), hue = hueOf(c);
+      URL.revokeObjectURL(src);
+      applyOwn(url, hue); st.burst = .5;
+      local.set('kv-wall', url); local.set('kv-wall-hue', hue == null ? '' : String(hue));
+      hideHint(true);
+      toast(local.get('kv-wall') ? 'Done. Every page now wears your wallpaper.' : 'Done for this visit. Your browser wouldn’t let the site remember it.');
+    };
+    img.onerror = () => { URL.revokeObjectURL(src); toast('That image couldn’t be opened. Try a JPG or PNG.'); };
+    img.src = src; picker.value = '';
+  });
+
+  // a gentle invitation, once
+  const hint = $('#wallHint');
+  function hideHint(remember) { if (hint) hint.classList.remove('show'); if (remember) local.set('kv-wall-hint', '1'); }
+  if (hint) {
+    $('#wallHintClose').addEventListener('click', () => hideHint(true));
+    if (!OG && !saved && !local.get('kv-wall-hint')) setTimeout(() => hint.classList.add('show'), 5200);
+  }
+
   /* ---------- boot: the first three seconds ---------- */
   resize();
   let rT; addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(resize, 150); });
   requestAnimationFrame(frame);
-  const start = () => { root.classList.add('go', 'lit'); lit = true; };
-  if (OG) { st.I = 1; start(); }
+  const start = () => root.classList.add('go');
+  if (OG) start();
   else Promise.race([d.fonts.ready, new Promise(r => setTimeout(r, 900))]).then(() => requestAnimationFrame(start));
 })();

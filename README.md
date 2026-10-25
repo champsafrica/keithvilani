@@ -15,7 +15,10 @@ A personal statement, not a portfolio. The whole site argues one sentence:
 - **Six bridges:** a swipeable rail of arched cards, one per venture.
 - **The shareable moment:** visitors sign the sentence with their name and city, and the site draws a 1080x1350 poster
   they can share straight to their phone's share sheet or download.
-- Every page keeps the same fluid light; the planet and the interactive pieces live on the home page.
+- **The background is the visitor's device.** Browsers can't read a device's wallpaper, so every page detects the
+  device (iPhone/iPad, Android, Mac, Windows, Linux) and wears a wallpaper in that system's style. One tap on
+  **Wallpaper** / **Use my wallpaper** lets visitors pick their real wallpaper photo: it becomes the background of every
+  page, the accent colours retune to it, and it's stored only in their browser. Preview a device with `?device=mac`.
 - Respects reduced motion, lowers resolution automatically on slow devices, and works without WebGL.
 
 ## Pages (19 + 404)
